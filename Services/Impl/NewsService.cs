@@ -19,7 +19,7 @@ namespace RssApi.Services.Impl
         {
             var news = await News.GetUserNews(userName);
 
-            return news.Where(x => x.PublishDate > date).ToList();
+            return news.Where(x => x.PublishDate > date || !x.IsRead).ToList();
         }
 
         public async Task ReadNews(string userName, int id)
